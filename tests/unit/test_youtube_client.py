@@ -2,7 +2,7 @@ from youtube_client import get_youtube_videos
 import requests
 
 
-def test_get_youtube_videos(monkeypatch):
+def test_get_youtube_videos_WHEN_request_sent_THEN_got_response(monkeypatch):
 
     # GIVEN
     class Mock:
