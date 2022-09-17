@@ -8,6 +8,7 @@ class Video(Base):
     __tablename__ = 'youtube_video'
 
     id = Column(String(), primary_key=True, index=True)
+    youtube_link = Column(String(40), unique=True)
     title = Column(String(100))
     youtube_publish_date = Column(DateTime())
     is_published_in_tg = Column(Boolean(), default=False)
