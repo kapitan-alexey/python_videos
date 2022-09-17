@@ -1,4 +1,4 @@
-from youtube_client import get_youtube_videos
+from get_videos_service.youtube_client import get_youtube_videos
 import requests
 
 
