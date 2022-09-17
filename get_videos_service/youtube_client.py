@@ -4,21 +4,27 @@ import requests
 from datetime import datetime
 
 
-def get_youtube_videos(channel_id: str, existing_videos: list, api_key: str) -> list[Video]:
+def get_youtube_videos(channel_id: str, api_key: str) -> dict:
     params = dict(
         key=api_key,
         channelId=channel_id,
         part='snippet',
         order='date',
-        maxResults='10',
+        maxResults='100',
         type='video',
-        # publishedAfter='2020-06-04T20:14:10Z'
+        # publishedAfter='2019-06-04T20:14:10Z',
     )
     videos_response = requests.get(YOUTUBE_API_ENDPOINT, params=params).json()
 
+    return videos_response
+
+
+def parse_videos(videos_dict: dict, existing_videos: list, channel_id: str) -> list[Video]:
+
     youtube_videos: list = []
 
-    for item in videos_response['items']:
+    youtube_link_prefix = 'https://www.youtube.com/watch?v='
+    for item in videos_dict['items']:
         if item['id']['videoId'] not in existing_videos:
             video_id = item['id']['videoId']
             video_title = item['snippet']['title']
@@ -26,6 +32,7 @@ def get_youtube_videos(channel_id: str, existing_videos: list, api_key: str) -> 
 
             video = Video(
                 id=video_id,
+                youtube_link=youtube_link_prefix+video_id,
                 title=video_title,
                 youtube_publish_date=video_published_at,
                 is_published_in_tg=False,
