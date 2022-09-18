@@ -1,6 +1,6 @@
+from models import Base, Channel, Video
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Base, Channel, Video
 
 engine = create_engine("sqlite+pysqlite:///youtube_videos.db")
 
