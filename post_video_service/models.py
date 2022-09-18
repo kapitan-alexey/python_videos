@@ -4,7 +4,7 @@ from sqlalchemy.orm import declarative_base
 Base = declarative_base()
 
 
-class Video(Base):
+class Video(Base):  # type: ignore
     __tablename__ = "youtube_video"
 
     id = Column(String(), primary_key=True, index=True)

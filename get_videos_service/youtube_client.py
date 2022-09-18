@@ -21,7 +21,7 @@ def get_youtube_videos(channel_id: str, api_key: str) -> dict:
 
 
 def parse_videos(
-        videos_dict: dict, existing_videos: list, channel_id: str
+    videos_dict: dict, existing_videos: list, channel_id: str
 ) -> list[Video]:
 
     youtube_videos: list = []
@@ -31,7 +31,9 @@ def parse_videos(
         if item["id"]["videoId"] not in existing_videos:
             video_id = item["id"]["videoId"]
             video_title = item["snippet"]["title"]
-            video_published_at = datetime.strptime(item["snippet"]["publishedAt"], "%Y-%m-%dT%H:%M:%Sz")
+            video_published_at = datetime.strptime(
+                item["snippet"]["publishedAt"], "%Y-%m-%dT%H:%M:%Sz"
+            )
 
             video = Video(
                 id=video_id,

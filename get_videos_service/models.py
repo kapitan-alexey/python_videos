@@ -4,7 +4,7 @@ from sqlalchemy.orm import declarative_base, relationship
 Base = declarative_base()
 
 
-class Channel(Base): # type: ignore
+class Channel(Base):  # type: ignore
     __tablename__ = "youtube_channel"
 
     id = Column(String(), primary_key=True)
@@ -15,7 +15,7 @@ class Channel(Base): # type: ignore
         return f"{self.id} [{self.desc}]"
 
 
-class Video(Base): # type: ignore
+class Video(Base):  # type: ignore
     __tablename__ = "youtube_video"
 
     id = Column(String(), primary_key=True)
