@@ -1,6 +1,6 @@
-from youtube_client import get_youtube_videos, parse_videos
-from db_client import get_channels, get_videos, save_new_videos
 from config import YOUTUBE_API_KEY
+from db_client import get_channels, get_videos, save_new_videos
+from youtube_client import get_youtube_videos, parse_videos
 
 channels = get_channels()
 
