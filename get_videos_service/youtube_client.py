@@ -2,11 +2,11 @@ from datetime import datetime
 from typing import List
 
 import requests
-from config import YOUTUBE_API_ENDPOINT
 from models import Video
 
 
 def get_youtube_videos(channel_id: str, api_key: str) -> dict:
+    youtube_api_endpoint = "https://youtube.googleapis.com/youtube/v3/search"
     params = dict(
         key=api_key,
         channelId=channel_id,
@@ -16,7 +16,7 @@ def get_youtube_videos(channel_id: str, api_key: str) -> dict:
         type="video",
         # publishedAfter="2019-06-04T20:14:10Z",
     )
-    videos_response = requests.get(YOUTUBE_API_ENDPOINT, params=params).json()
+    videos_response = requests.get(youtube_api_endpoint, params=params).json()
 
     return videos_response
 
