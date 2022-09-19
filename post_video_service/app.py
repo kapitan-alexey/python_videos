@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+#-*- coding: utf-8 -*-
+
 from db_client import get_video, update_video_status
 from telegram_client import post_video
 
