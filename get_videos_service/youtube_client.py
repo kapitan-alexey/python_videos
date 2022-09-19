@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import List
 
 import requests
 from config import YOUTUBE_API_ENDPOINT
@@ -22,7 +23,7 @@ def get_youtube_videos(channel_id: str, api_key: str) -> dict:
 
 def parse_videos(
     videos_dict: dict, existing_videos: list, channel_id: str
-) -> list[Video]:
+) -> List[Video]:
 
     youtube_videos: list = []
 
