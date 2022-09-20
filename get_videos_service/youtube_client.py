@@ -37,7 +37,6 @@ def parse_videos(
             )
 
             video = Video(
-                id=video_id,
                 youtube_link=youtube_link_prefix + video_id,
                 title=video_title,
                 youtube_publish_date=video_published_at,

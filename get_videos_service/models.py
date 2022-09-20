@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, String
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
@@ -7,7 +7,8 @@ Base = declarative_base()
 class Channel(Base):  # type: ignore
     __tablename__ = "youtube_channel"
 
-    id = Column(String(), primary_key=True)
+    id = Column(Integer(), primary_key=True)
+    youtube_id = Column(String(30), unique=True)
     desc = Column(String(100))
     videos = relationship("Video", backref="channel")
 
@@ -18,7 +19,7 @@ class Channel(Base):  # type: ignore
 class Video(Base):  # type: ignore
     __tablename__ = "youtube_video"
 
-    id = Column(String(), primary_key=True)
+    id = Column(Integer(), primary_key=True)
     youtube_link = Column(String(40), unique=True)
     title = Column(String(100))
     youtube_publish_date = Column(DateTime())

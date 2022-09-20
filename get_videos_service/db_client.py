@@ -2,8 +2,8 @@ from models import Base, Channel, Video
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine("sqlite+pysqlite:////home/python_videos/youtube_videos.db")
-# engine = create_engine("sqlite+pysqlite:///youtube_videos.db")
+# engine = create_engine("sqlite+pysqlite:////home/python_videos/youtube_videos.db")
+engine = create_engine("sqlite+pysqlite:///youtube_videos.db")
 
 Base.metadata.create_all(engine)
 
@@ -13,7 +13,7 @@ Session = sessionmaker(bind=engine)
 def get_channels() -> list:
     with Session() as session:
         channels = session.query(Channel).all()
-        channels_id = [channel.id for channel in channels]
+        channels_id = [channel.youtube_id for channel in channels]
         return channels_id
 
 
