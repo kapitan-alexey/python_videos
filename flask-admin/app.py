@@ -13,9 +13,9 @@ migrate = Migrate(app, db)
 app.config['SECRET_KEY'] = '123456790'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite+pysqlite:////home/python_videos/youtube_videos.db"
-app.config[
-    "SQLALCHEMY_DATABASE_URI"] = "sqlite+pysqlite:///E:\\python\\Python_youtube\\python_videos\\youtube_videos.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite+pysqlite:////home/python_videos/youtube_videos.db"
+# app.config[
+#     "SQLALCHEMY_DATABASE_URI"] = "sqlite+pysqlite:///E:\\python\\Python_youtube\\python_videos\\youtube_videos.db"
 
 db.init_app(app)
 
