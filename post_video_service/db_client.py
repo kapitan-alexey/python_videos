@@ -2,8 +2,8 @@ from models import Video
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-# engine = create_engine("sqlite+pysqlite:////home/python_videos/youtube_videos.db")
-engine = create_engine("sqlite+pysqlite:///youtube_videos.db")
+engine = create_engine("sqlite+pysqlite:////home/python_videos/youtube_videos.db")
+# engine = create_engine("sqlite+pysqlite:///youtube_videos.db")
 Session = sessionmaker(bind=engine)
 
 
