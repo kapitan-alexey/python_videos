@@ -71,3 +71,6 @@ admin = admin.Admin(app, 'Python videos admin', base_template='layout.html', tem
 # Add views
 admin.add_view(ChannelView(Channel, db.session))
 admin.add_view(VideoView(Video, db.session))
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
