@@ -20,8 +20,8 @@ class Video(Base):  # type: ignore
     __tablename__ = "youtube_video"
 
     id = Column(Integer(), primary_key=True)
-    youtube_link = Column(String(40), unique=True)
-    title = Column(String(100))
+    youtube_link = Column(String(50), unique=True)
+    title = Column(String(200))
     youtube_publish_date = Column(DateTime())
     is_published_in_tg = Column(Boolean(), default=False)
     channel_id = Column(String(), ForeignKey("youtube_channel.id"))
