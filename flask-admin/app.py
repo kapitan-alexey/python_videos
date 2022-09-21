@@ -35,8 +35,8 @@ class Video(db.Model):
     __tablename__ = "youtube_video"
 
     id = db.Column(db.Integer(), primary_key=True)
-    youtube_link = db.Column(db.String(40), unique=True)
-    title = db.Column(db.String(100))
+    youtube_link = db.Column(db.String(50), unique=True)
+    title = db.Column(db.String(200))
     youtube_publish_date = db.Column(db.DateTime())
     is_published_in_tg = db.Column(db.Boolean(), default=False)
     channel_id = db.Column(db.String(), db.ForeignKey("youtube_channel.id"))
