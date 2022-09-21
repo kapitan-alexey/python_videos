@@ -24,6 +24,7 @@ def get_youtube_videos(channel_id: str, api_key: str) -> dict:
 def parse_videos(
     videos_dict: dict, existing_videos: list, channel_id: str
 ) -> List[Video]:
+    print(videos_dict)
 
     youtube_videos: list = []
 
