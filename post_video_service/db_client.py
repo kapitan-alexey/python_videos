@@ -1,5 +1,5 @@
 from models import Video
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 
 engine = create_engine("sqlite+pysqlite:////home/python_videos/youtube_videos.db")
@@ -12,8 +12,7 @@ def get_video() -> Video:
         video = (
             session.query(Video)
             .filter(Video.is_published_in_tg == 0)
-            .order_by(Video.youtube_publish_date)
-            .first()
+            .order_by(func.random()).first()
         )
         return video
 
