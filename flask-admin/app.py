@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import flask_admin as admin
 from flask_migrate import Migrate
+import datetime
 
 from flask_admin.contrib.sqla import ModelView
 
@@ -45,6 +46,16 @@ class Video(db.Model):
         return self.title
 
 
+class Post(db.Model):
+    __tablename__ = "posts"
+
+    id = db.Column(db.Integer(), primary_key=True)
+    title = db.Column(db.String(200))
+    link = db.Column(db.String(100), unique=True)
+    date_added = db.Column(db.DateTime(), default=datetime.datetime.utcnow())
+    is_published_in_tg = db.Column(db.Boolean(), default=False)
+
+
 # Customized admin interface
 class ChannelView(ModelView):
     # column_list = ('id', 'desc')
@@ -55,6 +66,13 @@ class ChannelView(ModelView):
 
 class VideoView(ModelView):
     # column_list = ('id', 'desc')
+    list_template = 'list.html'
+    create_template = 'create.html'
+    edit_template = 'edit.html'
+
+
+class PostView(ModelView):
+    # column_list = ('title', 'is_published_in_tg')
     list_template = 'list.html'
     create_template = 'create.html'
     edit_template = 'edit.html'
@@ -71,6 +89,7 @@ admin = admin.Admin(app, 'Python videos admin', base_template='layout.html', tem
 # Add views
 admin.add_view(ChannelView(Channel, db.session))
 admin.add_view(VideoView(Video, db.session))
+admin.add_view(PostView(Post, db.session))
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
